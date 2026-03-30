@@ -11,7 +11,7 @@ resized_img = pil_image.resize(SIZEIMAGE, Image.Resampling.LANCZOS)
 
 #numpy convert
 image_np = np.asarray(resized_img)
-print(image_np.shape)
+
 
 #reshape to original data
 pilImageRecreated = Image.fromarray(image_np, 'RGB')
