@@ -2,19 +2,36 @@ import numpy as np
 from CONFIG import *
 import random
 
+class Neuronio():
+    def __init__(self, size):
+        self.weights = np.random.random(size=size) * random.randint(-5, 5)
+
+
 class Rede():
-    def __init__(self, size, rng, topology):
-        self.weights = rng.random(size=size)
+    def __init__(self, size, topology, weight=None):
+        if weight is not None:
+            self.weights = weight
+        else:
+            self.weights = np.random.random(size=size) * random.randint(-5, 5)
         self.layers = topology
-        self.rng = rng
+        self.fitness = 0
     
+    def reLU(self, x):
+        return np.maximum(0, x)
+
     def feedforward(self, arrayData):
-        pass
+        temp
 
     def crossOver(self, otherRede):
-        self.weights = (self.weights + otherRede.weights) / 2
+        return Rede(self.weights.shape[0], self.layers, weight=(self.weights + otherRede.weights) / 2)
 
     def mutation(self):
         for i in range(len(self.weights)):
-            if self.rng.random() < MUTATIONRATE:
-                self.weights[i] += random.randint(0,1)*(-1)*self.rng.random()
+            if random.random() < MUTATIONRATE:
+                self.weights[i] += random.randint(-5, 5) * np.random.random()
+
+    def __lt__(self, other):
+        return self.fitness < other.fitness
+    
+    def Fitness(self):
+        pass
